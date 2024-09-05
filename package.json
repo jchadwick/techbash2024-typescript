@@ -1,0 +1,21 @@
+{
+  "scripts": {
+    "clean": "git checkout main -- db.json && rimraf react-app slides",
+    "demo": "live-server --port=3001 --open=/ ./demo",
+    "json-server": "json-server db.json",
+    "react-app:init": "mkdir -p react-app && rm -rf react-app/* && cp demo/site.css demo/users-api.js react-app && cp converted/index.html.txt react-app/index.html",
+    "present": "run-p -l present:*",
+    "present:demo": "run-s demo",
+    "present:react-app": "run-s react-app:init && code react-app",
+    "present:slides": "open https://www.jesschadwick.com/techbash2024-react/",
+    "slides:render": ""
+  },
+  "devDependencies": {
+    "json-server": "^1.0.0-beta.2",
+    "live-server": "^1.2.2",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.3.3",
+    "reveal.js": "^5.1.0",
+    "rimraf": "^6.0.1"
+  }
+}
