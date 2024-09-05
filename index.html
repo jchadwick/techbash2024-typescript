@@ -360,7 +360,7 @@
             }
           }
 
-          printArray([1, 2, 3, 4, 5]);  ❌
+          printArray([1, 2, 3, 4, 5]); ❌
         </code></pre>
       </section>
 
@@ -381,9 +381,108 @@
         </code></pre>
       </section>
 
-      <section data-auto-animate>
-        <h2>TypeScript Syntax</h2>
-        <h3>And a handful more...</h3>
+      <section id="utility-types" data-auto-animate>
+
+        <section>
+          <h2>TypeScript Utility Types</h2>
+          <div class="r-stretch font-xxs">
+            <style>
+              #utility-types ul li>code.bold {
+                display: inline-block;
+                width: 10em;
+              }
+            </style>
+            <ul style="list-style: none;">
+              <li>
+                <code class="bold">Partial&lt;T></code> Makes all properties of type <code>T</code> optional.
+              </li>
+              <li>
+                <code class="bold">Required&lt;T></code> Makes all properties of type <code>T</code> required.
+              </li>
+              <li>
+                <code class="bold">Readonly&lt;T></code> Makes all properties of type <code>T</code> readonly.
+              </li>
+              <li>
+                <code class="bold">Pick&lt;T, K></code> Picks specific properties <code>K</code> from type
+                <code>T</code>.
+              </li>
+              <li>
+                <code class="bold">Omit&lt;T, K></code> Omits specific properties <code>K</code> from type
+                <code>T</code>.
+              </li>
+              <li>
+                <code class="bold">Exclude&lt;T, U></code> Excludes types from <code>T</code> that are assignable to
+                <code>U</code>.
+              </li>
+              <li>
+                <code class="bold">Extract&lt;T, U></code> Extracts types from <code>T</code> that are assignable to
+                <code>U</code>.
+              </li>
+              <li>
+                <code class="bold">NonNullable&lt;T></code> Removes <code>null</code> and <code>undefined</code> from
+                type
+                <code>T</code>.
+              </li>
+              <li>
+                <code class="bold">ReturnType&lt;T></code> Extracts the return type of a function <code>T</code>.
+              </li>
+              <li>
+                <code class="bold">Parameters&lt;T></code> Extracts the parameter types of a function <code>T</code>.
+              </li>
+              <li>
+                <code class="bold">InstanceType&lt;T></code> Extracts the instance type of a constructor function
+                <code>T</code>.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section data-auto-animate>
+          <h3>Partial&lt;T></h3>
+          <em class="font-sm">Marks all properties of type <code>T</code> as optional</em>
+          <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="3,6-8" data-no-escape>
+            interface Person {
+              name: string;
+              age: number;
+            }
+
+            let person: Partial&lt;Person> = {
+              name: "Alice"
+            }; ✅
+        </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h3>Required&lt;T></h3>
+          <em class="font-sm">Marks all properties of type <code>T</code> as not optional</em>
+          <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="3,6" data-no-escape>
+            interface Person {
+              name: string;
+              age?: number;
+            }
+
+            let personWithAge: Required&lt;Person> = {
+              name: "Alice"
+            }; ❌
+        </code></pre>
+          <img src="images/utility-required.png" />
+        </section>
+
+        <section data-auto-animate>
+          <h3>Omit&lt;T, U></h3>
+          <em class="font-sm">Omits all properties of type <code>U</code> from type <code>T</code></em>
+          <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="6-8" data-no-escape>
+            interface Person {
+              name: string;
+              age?: number;
+            }
+
+            let noNamePerson: Omit&lt;Person, "name"> = {
+              name: "Alice"
+            }; ❌
+        </code></pre>
+          <img src="images/utility-omit.png" />
+        </section>
       </section>
 
       <section>
