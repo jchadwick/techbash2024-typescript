@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-200">
+    <div class="mx-auto my-3 w-1/2 bg-white rounded-lg p-8">
+        <div class="flex flex-row items-baseline justify-between mx-auto pb-6">
+            <h1 class="text-4xl bold">User Management System</h1>
+
+            <div class="flex flex-row items-baseline justify-end">
+                <label for="sort-order" class="pr-2 text-gray-700 font-medium mb-2">Sort By:</label>
+                <select id="sort-order" class="w-32 border border-gray-300 rounded-md"
+                    onchange="fetchUsers({ sortField: this.value })">
+                    <option value="username">Username</option>
+                    <option value="age">Age</option>
+                    <option value="role">Role</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- User List -->
+        <table class="table w-full">
+            <thead>
+                <tr class="border-b-2">
+                    <th class="text-left">Role</th>
+                    <th class="text-left">Create Date</th>
+                    <th class="text-left">Username</th>
+                    <th class="text-left">Age</th>
+                    <th class="text-left">Title</th>
+                </tr>
+            </thead>
+            <tbody id="userList"></tbody>
+            <!-- Users will be dynamically added here -->
+        </table>
+
+
+        <hr class="my-3 w-full flex" />
+
+        <div class="w-full">
+            <form id="add-user-form" class="w-full flex flex-row gap-2 items-end">
+                <div>
+                    <label for="type" class="block text-gray-700 font-medium mb-2">User Type:</label>
+                    <select name="type" id="type" class="block w-full px-3 py-2 border border-gray-300 rounded-md"
+                        onchange="toggleAddUserFields(this.value)">
+                        <option value="employee">Employee</option>
+                        <option value="user" selected>User</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="username" class="block semibold text-gray-700 font-medium mb-2">Username:</label>
+                    <input type="text" name="username" id="username"
+                        class="block w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="Username">
+                </div>
+
+                <div data-type="user" style="display: none;">
+                    <label for="age" class="block semibold text-gray-700 font-medium mb-2">Age:</label>
+                    <input type="number" name="age" id="age"
+                        class="block w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="Age">
+                </div>
+
+                <div data-type="employee" style="display: none;">
+                    <label for="title" class="block semibold text-gray-700 font-medium mb-2">Job Title:</label>
+                    <input type="text" name="title" id="title"
+                        class="block w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="Job Title">
+                </div>
+
+                <button type="submit" class="h-10 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+                    Add User
+                </button>
+            </form>
+        </div>
+
+
+        <script type="text/javascript" src="./index.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('onload', init());
+        </script>
+</body>
+
+</html>

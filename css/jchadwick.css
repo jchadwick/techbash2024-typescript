@@ -67,6 +67,11 @@ th.half {
   padding: 1em;
 }
 
+.px-1 {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
 .py-1 {
   padding-top: 1em;
   padding-bottom: 1em;
