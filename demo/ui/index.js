@@ -107,6 +107,10 @@ function renderSortOptions(fields) {
 function toggleAddUserFields(selectedType) {
     document.querySelectorAll("[data-type]").forEach(field => {
         const show = field.getAttribute("data-type") === selectedType
-        field.style.display = show ? 'inline-block' : 'none';
+        if (show) {
+            field.classList.remove("hidden")
+        } else {
+            field.classList.add("hidden")
+        }
     });
 }
