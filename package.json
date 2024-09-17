@@ -1,13 +1,15 @@
 {
   "scripts": {
-    "clean": "rimraf .parcel-cache dist",
     "build": "run-p slides:render",
-    "start": "run-p slides:serve slides:open",
+    "clean": "rimraf .parcel-cache dist",
+    "demo-app:init": "rm -rf demo-converted/* && cpy 'demo/**' '!demo/node_modules' demo-converted && cd demo-converted && npm ci && code .",
+    "start": "run-p slides:serve slides:open demo-app:init",
     "slides:serve": "parcel index.html",
     "slides:open": "open http://localhost:1234",
     "slides:render": "parcel build --public-url=./ index.html"
   },
   "devDependencies": {
+    "cpy-cli": "^5.0.0",
     "npm-run-all": "^4.1.5",
     "parcel": "^2.12.0",
     "prettier": "^3.3.3",

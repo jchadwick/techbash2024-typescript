@@ -1,0 +1,27 @@
+@baseUrl=http://localhost:3000
+
+### Get metadata
+GET {{baseUrl}}/meta
+
+### Get users
+GET {{baseUrl}}/users
+
+### Create user
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+    "username": "John Doe",
+    "type": "user",
+    "age": 32
+}
+
+### Create employee user
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+    "username": "John Doe",
+    "type": "employee",
+    "title": "Software Engineer"
+}
