@@ -3,3 +3,4 @@ dist/
 node_modules/
 updated/
 demo-converted/
+.DS_Store

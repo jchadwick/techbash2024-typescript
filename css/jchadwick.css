@@ -114,6 +114,10 @@ th.half {
   font-size: 80%;
 }
 
+code.font-md {
+  line-height: 1.2em;
+}
+
 .avatar {
   border-radius: 50%;
   height: 4em;

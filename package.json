@@ -4,7 +4,7 @@
     "clean": "rimraf .parcel-cache dist",
     "demo-app:init": "rm -rf demo-converted/* && cpy 'demo/**' '!demo/node_modules' demo-converted && cd demo-converted && npm ci && code .",
     "start": "run-p slides:serve slides:open demo-app:init",
-    "slides:serve": "parcel index.html",
+    "slides:serve": "parcel serve --watch-dir ./ index.html",
     "slides:open": "open http://localhost:1234",
     "slides:render": "parcel build --public-url=./ index.html"
   },

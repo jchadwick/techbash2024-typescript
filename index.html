@@ -52,63 +52,20 @@
       </section>
 
       <section id="what-is-typescript">
-        <h2>What is TypeScript?</h2>
-        <em>
-          A superset of JavaScript that adds
-          static type syntax
-        </em>
-      </section>
-
-      <section id="dynamic-vs-static-typing">
-        <h2>What is Static Typing?</h2>
-
-        <div class="r-stretch mt-2">
-          <table>
-            <thead>
-              <tr>
-                <th class="half text-center">Dynamic Typing</th>
-                <th class="half text-center">Static Typing</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <pre><code class="font-md language-javascript" data-trim data-line-numbers>
-          let username = "Alice";
-          let age = 30;
-          username = age; ✅
-          username = somethingElse; ✅
-        </code></pre>
-                  <div class="font-xxs text-center">
-                    <p>Variables type are not explictly defined.</p>
-                    Variables can be (re-)assigned to any type
-                  </div>
-                </td>
-                <td>
-                  <pre><code class="font-md language-typescript" data-trim data-line-numbers>
-          let username = "Alice";
-          let age = 30;
-          username = age; ❌
-          username = somethingElse; ❌
-        </code></pre>
-                  <div class="font-xxs text-center">
-                    <p>Must define the type of a variable.</p>
-                    Trying to assign a different type results in an error
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="r-stretch mt-1 flex flex-column justify-between">
+          <h2>What is TypeScript?</h2>
+          <div class="italic">
+            A superset of JavaScript that adds
+            static type syntax
+          </div>
+          <div>
+            <p class="font-sm ">Released by Microsoft in 2012</p>
+            <p><a href="https://typescriptlang.org">typescriptlang.org</a></p>
+          </div>
         </div>
       </section>
 
-      <section id="why-static-typing">
-        <h2> Why static typing?</h2>
-        <ul>
-          <li>Better tooling (intellisense, refactoring)</li>
-          <li>Catch more errors earlier</li>
-        </ul>
-      </section>
+
 
       <section id="typescript-initial-reaction">
         <section>
@@ -131,10 +88,61 @@
         </section>
       </section>
 
+      <section id="dynamic-vs-static-typing">
+        <h2>What is Static Typing?</h2>
+
+        <div class="r-stretch mt-2">
+          <table>
+            <thead>
+              <tr>
+                <th class="half text-center">Dynamic Typing</th>
+                <th class="half text-center">Static Typing</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <pre><code class="font-md language-javascript" data-trim data-line-numbers>
+                    let username = "Alice";
+                    let age = 30;
+                    username = age; ✅
+                    username = somethingElse; ✅
+                  </code></pre>
+                  <div class="font-xxs text-center">
+                    <p>Variable types are not explicitly defined.</p>
+                    Variables can be (re-)assigned to any type
+                  </div>
+                </td>
+                <td>
+                  <pre><code class="font-md language-typescript" data-trim data-line-numbers>
+                    let username = "Alice";
+                    let age = 30;
+                    username = age; ❌
+                    username = somethingElse; ❌
+                  </code></pre>
+                  <div class="font-xxs text-center">
+                    <p>Must define the type of a variable.</p>
+                    Trying to assign a different type results in an error
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="why-static-typing">
+        <h2> Why static typing?</h2>
+        <ul>
+          <li>Better tooling (intellisense, refactoring)</li>
+          <li>Catch more errors earlier</li>
+        </ul>
+      </section>
+
       <section id="js-doc">
         <h2>Typing via JSDoc Comments</h2>
 
-        <pre><code class="language-javascript" data-trim data-line-numbers="1,4-8">
+        <pre><code class="language-javascript" data-trim data-line-numbers="1-8">
           /** @type string */
           let myVar;
           
@@ -267,51 +275,86 @@
           <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="6-8">
           interface Person {
             name: string;
+            createDate: Date;
             age?: number;
           }
 
           interface Employee extends Person {
-            jobTitle: string;
+            title: string;
           }
         </code></pre>
         </section>
       </section>
 
       <section id="typescript-syntax-union-types" data-auto-animate>
-        <h2>TypeScript Syntax</h2>
-        <h3 data-id="typescript-syntax-title">Custom Types: Union Types</h3>
-        <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers>
-          let user: Person | Employee;
+        <section data-auto-animate>
+          <h2>TypeScript Syntax</h2>
+          <h3 data-id="typescript-syntax-title">Union Types</h3>
+          <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="1-13|2,3,8,9">
+            interface Person {
+              name: string;
+              createDate: Date;
+              age?: number;
+            }
+  
+            interface Employee {
+              name: string;
+              createDate: Date;
+              title: string;
+            }
+
+            let user: Person | Employee;
         </code></pre>
+        </section>
+        <section data-auto-animate>
+          <h2>TypeScript Syntax</h2>
+          <h3 data-id="typescript-syntax-title">Union Types</h3>
+            <img class="r-stretch" src="images/union-type-intellisense.png" />
+        </section>
+        <section data-auto-animate>
+          <h2>TypeScript Syntax</h2>
+          <h3 data-id="typescript-syntax-title">Union Types</h3>
+            <img class="r-stretch" src="images/union-type-intellisense-2.png" />
+        </section>
       </section>
 
       <section id="typescript-syntax-aliases" data-auto-animate>
         <section data-auto-animate>
           <h2>TypeScript Syntax</h2>
           <h3 data-id="typescript-syntax-title">Custom Types: Aliases</h3>
-          <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="1-9|11|13">
-          interface Person {
-            name: string;
-            age?: number;
-          }
-          
-          interface Employee {
-            name: string;
-            jobTitle: string;
-          }
-          
-          type User = Person | Employee;
+          <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="1|3,7">
+            function createUser(createDate: string | number | Date, /* ... */): User {
+              const user: User = {
+                createDate: toDate(createDate),
+                // ...
+            }
 
-          let user: User;
-        </code></pre>
+            function toDate(dateLike: string | number | Date): Date {
+            </code></pre>
         </section>
-
         <section data-auto-animate>
           <h2>TypeScript Syntax</h2>
-          <h3 data-id="typescript-syntax-title">Aliases</h3>
-          <div data-id="typescript-syntax-example">
-            <img src="images/intellisense-alias.png" style="height: 10em" />
-          </div>
+          <h3 data-id="typescript-syntax-title">Custom Types: Aliases</h3>
+          <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers>
+            type DateLike = string | number | Date;
+
+            function createUser(createDate: DateLike, /* ... */)
+              
+            function toDate(dateLike: DateLike): Date
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <h2>TypeScript Syntax</h2>
+          <h3 data-id="typescript-syntax-title">Custom Types: Aliases</h3>
+          <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers>
+            type DateLike = string | number | Date;
+
+            let createDate: DateLike;
+
+            createDate = "2021-01-01"; ✅
+            createDate = 1612137600000; ✅
+            createDate = new Date(); ✅
+          </code></pre>
         </section>
       </section>
 
@@ -352,7 +395,7 @@
           <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="1|3" data-no-escape>
           function printUserName&lt;T extends User>(arr: T[]): void {
             for (let item of arr) {
-              console.log(item.name);
+              console.log(item.name, "; Created: ", item.createDate);
             }
           }
         </code></pre>
@@ -364,11 +407,11 @@
           <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="7" data-no-escape>
           function printUserName&lt;T extends User>(arr: T[]): void {
             for (let item of arr) {
-              console.log(item.name);
+              console.log(item.name, "; Created: ", item.createDate);
             }
           }
 
-          printArray([1, 2, 3, 4, 5]); ❌
+          printUserName([1, 2, 3, 4, 5]); ❌
         </code></pre>
         </section>
 
@@ -378,20 +421,53 @@
           <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="7-10" data-no-escape>
           function printUserName&lt;T extends User>(arr: T[]): void {
             for (let item of arr) {
-              console.log(item.name);
+              console.log(item.name, "; Created: ", item.createDate);
             }
           }
 
           const user1: Person = { name: "Priya" }
-          const user2: Employee = { name: "Elon", jobTitle: "CEO" }
+          const user2: Employee = { name: "Elon", title: "CEO" }
 
-          printArray([ user1, user2 ]); ✅
+          printUserName([ user1, user2 ]); ✅
         </code></pre>
+        </section>
+
+      </section>
+
+      <section id="keyof" data-auto-animate>
+        <section data-auto-animate>
+          <h2>TypeScript Syntax</h2>
+          <h3 data-id="typescript-syntax-title"><code>keyof</code></h3>
+
+          <pre data-id="typescript-syntax-example"><code class="language-typescript font-md" data-trim data-line-numbers="7" data-no-escape>
+            interface Person {
+              name: string;
+              createDate: Date;
+              age?: number;
+            }
+
+            type PersonFields = keyof Person;
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <h2>TypeScript Syntax</h2>
+          <h3 data-id="typescript-syntax-title"><code>keyof</code></h3>
+
+          <pre data-id="typescript-syntax-example"><code class="language-typescript font-md" data-trim data-line-numbers="7" data-no-escape>
+            interface Person {
+              name: string;
+              createDate: Date;
+              age?: number;
+            }
+
+            type PersonField = keyof Person;
+          </code></pre>
+          <img src="images/keyof-intellisense.png" />
         </section>
 
         <section data-auto-animate>
           <h2>TypeScript Syntax</h2>
-          <h3 data-id="typescript-syntax-title">Generics: <code>keyof</code></h3>
+          <h3 data-id="typescript-syntax-title"><code>keyof</code></h3>
 
           <pre data-id="typescript-syntax-example"><code class="language-typescript font-md" data-trim data-line-numbers="1" data-no-escape>
             function sortUsersBy&lt;TUser extends User, TField extends keyof TUser>(
@@ -400,11 +476,6 @@
               ): TUser[] {
               return [...users].sort((a, b) => a[field] > b[field] ? 1 : -1);
             }
-
-            const user1: Person = { name: "Priya" }
-            const user2: Employee = { name: "Elon", jobTitle: "CEO" }
-
-            printArray([ user1, user2 ]); ✅
           </code></pre>
           <img src="images/generics-keyof-autocomplete.png" />
           <img src="images/generics-keyof-error.png" />
@@ -463,6 +534,10 @@
                 <code class="bold">InstanceType&lt;T></code> Extracts the instance type of a constructor function
                 <code>T</code>.
               </li>
+              <li>
+                <code class="bold">Record&lt;T, U></code> Defines an object with field names of type <code>T</code> and
+                properties of type <code>U</code>.
+              </li>
             </ul>
           </div>
         </section>
@@ -471,15 +546,15 @@
           <h3>Partial&lt;T></h3>
           <em class="font-sm">Marks all properties of type <code>T</code> as optional</em>
           <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="3,6-8" data-no-escape>
-            interface Person {
-              name: string;
-              age: number;
-            }
+              interface Person {
+                name: string;
+                age: number;
+              }
 
-            let person: Partial&lt;Person> = {
-              name: "Alice"
-            }; ✅
-        </code></pre>
+              let person: Partial&lt;Person> = {
+                name: "Alice"
+              }; ✅
+          </code></pre>
         </section>
 
         <section data-auto-animate>
@@ -501,17 +576,79 @@
         <section data-auto-animate>
           <h3>Omit&lt;T, U></h3>
           <em class="font-sm">Omits all properties of type <code>U</code> from type <code>T</code></em>
-          <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="6-8" data-no-escape>
+          <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="7|7-9" data-no-escape>
             interface Person {
               name: string;
+              createDate: Date;
               age?: number;
             }
 
-            let noNamePerson: Omit&lt;Person, "name"> = {
+            let noNamePerson: Omit&lt;Person, "name" | "createDate"> = {
               name: "Alice"
             }; ❌
         </code></pre>
           <img src="images/utility-omit.png" />
+        </section>
+
+        <section data-auto-animate>
+          <h2>TypeScript Syntax</h2>
+          <h3 data-id="typescript-syntax-title">Generics & Aliases</h3>
+          <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="13-16">
+            interface Person {
+              name: string;
+              createDate: Date;
+              age?: number;
+            }
+            
+            interface Employee {
+              name: string;
+              createDate: Date;
+              title: string;
+            }
+            
+            type NewUserRecord = Partial&lt; 
+              Omit&lt;Person, "createDate"> &
+              Omit&lt;Employee, "createDate"> 
+            >;
+          </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h2>TypeScript Syntax</h2>
+          <h3 data-id="typescript-syntax-title"><code>Record&lt;T></code></h3>
+
+          <pre data-id="typescript-syntax-example"><code class="language-typescript font-md" data-trim data-line-numbers data-no-escape>
+            type ValidationFields = "name" | "createDate";
+
+            let validationResult: Record&lt;ValidationFields, boolean>;
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <h2>TypeScript Syntax</h2>
+          <h3 data-id="typescript-syntax-title"><code>Record&lt;T></code></h3>
+
+          <pre data-id="typescript-syntax-example"><code class="language-typescript font-md" data-trim data-line-numbers="4-5" data-no-escape>
+            type ValidationFields = "name" | "createDate";
+
+            let validationResult: Record&lt;ValidationFields, boolean> = {
+              name: true,
+              createDate: "test",
+            };
+          </code></pre>
+          <img src="images/record-createDate-string.png" />
+        </section>
+        <section data-auto-animate>
+          <h2>TypeScript Syntax</h2>
+          <h3 data-id="typescript-syntax-title"><code>Record&lt;T></code></h3>
+
+          <pre data-id="typescript-syntax-example"><code class="language-typescript font-md" data-trim data-line-numbers="4" data-no-escape>
+          type ValidationFields = "name" | "createDate";
+
+          let validationResult: Record&lt;ValidationFields, boolean> = {
+            name: true,
+          };
+        </code></pre>
+          <img src="images/record-not-enough-properties.png" />
         </section>
       </section>
 
@@ -526,7 +663,7 @@
           <p>Most popular libraries have TypeScript definitions built into their NPM packages.</p>
         </section>
         <section fragment>
-          <p>...or a community-supported one:
+          <p class="center">...or a community-supported one:<br />
             <a href="https://www.npmjs.com/search?q=@types">npmjs.com/search?q=@types</a>
           </p>
         </section>
@@ -604,7 +741,6 @@
   <script src="/node_modules/reveal.js/plugin/markdown/markdown.js"></script>
   <script src="/node_modules/reveal.js/plugin/highlight/highlight.js"></script>
   <script>
-
     Reveal.initialize({
       hash: true,
       plugins: [
