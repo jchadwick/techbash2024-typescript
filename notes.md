@@ -14,13 +14,6 @@
 - [ ] install Node types
 - [ ] install express & cors types
 - [ ] rename to .ts
-- [ ] fix any issues
-- [ ] Show how to run with tsx
 - [ ] create model.ts
-- [ ] define User, Employee, and NormalUser interfaces
-- [ ] define UserTypes type
-- [ ] define UserAccountFields type
 - [ ] apply User[] to users array
-- [ ] fix issues
-- [ ] define MetaDataResponse and MetaField&lt;T>
-
+- [ ] apply type User to post.body

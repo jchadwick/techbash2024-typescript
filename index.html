@@ -393,7 +393,7 @@
           <h2>TypeScript Syntax</h2>
           <h3 data-id="typescript-syntax-title">Generics</h3>
           <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="1|3" data-no-escape>
-          function printUserName&lt;T extends User>(arr: T[]): void {
+          function printUserName&lt;T extends Person | Employee>(arr: T[]): void {
             for (let item of arr) {
               console.log(item.name, "; Created: ", item.createDate);
             }
@@ -405,7 +405,7 @@
           <h2>TypeScript Syntax</h2>
           <h3 data-id="typescript-syntax-title">Generics</h3>
           <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="7" data-no-escape>
-          function printUserName&lt;T extends User>(arr: T[]): void {
+          function printUserName&lt;T extends Person | Employee>(arr: T[]): void {
             for (let item of arr) {
               console.log(item.name, "; Created: ", item.createDate);
             }
@@ -419,7 +419,7 @@
           <h2>TypeScript Syntax</h2>
           <h3 data-id="typescript-syntax-title">Generics</h3>
           <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="7-10" data-no-escape>
-          function printUserName&lt;T extends User>(arr: T[]): void {
+          function printUserName&lt;T extends Person | Employee>(arr: T[]): void {
             for (let item of arr) {
               console.log(item.name, "; Created: ", item.createDate);
             }
@@ -535,7 +535,7 @@
                 <code>T</code>.
               </li>
               <li>
-                <code class="bold">Record&lt;T, U></code> Defines an object with field names of type <code>T</code> and
+                <code class="bold">Record&lt;T, U, U></code> Defines an object with field names of type <code>T</code> and
                 properties of type <code>U</code>.
               </li>
             </ul>
@@ -615,7 +615,7 @@
 
         <section data-auto-animate>
           <h2>TypeScript Syntax</h2>
-          <h3 data-id="typescript-syntax-title"><code>Record&lt;T></code></h3>
+          <h3 data-id="typescript-syntax-title"><code>Record&lt;T, U></code></h3>
 
           <pre data-id="typescript-syntax-example"><code class="language-typescript font-md" data-trim data-line-numbers data-no-escape>
             type ValidationFields = "name" | "createDate";
@@ -625,7 +625,7 @@
         </section>
         <section data-auto-animate>
           <h2>TypeScript Syntax</h2>
-          <h3 data-id="typescript-syntax-title"><code>Record&lt;T></code></h3>
+          <h3 data-id="typescript-syntax-title"><code>Record&lt;T, U></code></h3>
 
           <pre data-id="typescript-syntax-example"><code class="language-typescript font-md" data-trim data-line-numbers="4-5" data-no-escape>
             type ValidationFields = "name" | "createDate";
@@ -639,7 +639,7 @@
         </section>
         <section data-auto-animate>
           <h2>TypeScript Syntax</h2>
-          <h3 data-id="typescript-syntax-title"><code>Record&lt;T></code></h3>
+          <h3 data-id="typescript-syntax-title"><code>Record&lt;T, U></code></h3>
 
           <pre data-id="typescript-syntax-example"><code class="language-typescript font-md" data-trim data-line-numbers="4" data-no-escape>
           type ValidationFields = "name" | "createDate";
@@ -655,18 +655,6 @@
       <section>
         <h2>Coding Time</h2>
         <img src="images/lets-do-this.webp" />
-      </section>
-
-      <section>
-        <h2>Third-Party Libraries</h2>
-        <section fragment>
-          <p>Most popular libraries have TypeScript definitions built into their NPM packages.</p>
-        </section>
-        <section fragment>
-          <p class="center">...or a community-supported one:<br />
-            <a href="https://www.npmjs.com/search?q=@types">npmjs.com/search?q=@types</a>
-          </p>
-        </section>
       </section>
 
       <section>

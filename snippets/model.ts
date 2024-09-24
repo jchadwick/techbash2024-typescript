@@ -14,3 +14,9 @@ export interface Employee extends BaseUser {
   title: string;
 }
 
+export type User = Person | Employee;
+
+export type NewUserFields = keyof Person | keyof Employee;
+export type NewUserValidation = Partial<
+  Record<NewUserFields, boolean>
+>;

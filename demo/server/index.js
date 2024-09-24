@@ -68,29 +68,27 @@ app.post("/users", (req, res) => {
 
   console.log(`[POST] /users: ${JSON.stringify(body)}`);
 
-  const { username, type, age, title } = body;
-
   const newUser = {
     createDate: new Date(),
-    username,
-    type,
-    age,
-    title,
+    username: body.username,
+    type: body.type,
   };
 
   // initialize a object to hold validation results (by field name)
   const validFields = {
-    username: !!username,
+    username: !!body.username,
   };
 
   // validate employee fields
-  if (!type) {
+  if (!body.type) {
     validFields.type = false;
   }
-  if (type === "Employee") {
-    validFields.title = !!title;
+  if (body.type === "Employee") {
+    validFields.title = !!body.title;
+    newUser.title = body.title
   } else {
-    validFields.age = !!age;
+    validFields.age = !!body.age;
+    newUser.age = body.age
   }
 
   if (Object.values(validFields).some((x) => !x)) {
@@ -107,6 +105,8 @@ app.post("/users", (req, res) => {
       });
   }
 
+  // by this point we've added all of the appropriate fields and newUser
+  // is now a full, valid "User"
   users.push(newUser);
 
   res.status(201).json({
