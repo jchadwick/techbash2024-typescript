@@ -134,13 +134,13 @@
       <section id="why-static-typing">
         <h2> Why static typing?</h2>
         <ul>
-          <li>Better tooling (intellisense, refactoring)</li>
           <li>Catch more errors earlier</li>
+          <li>Better tooling (intellisense, refactoring)</li>
         </ul>
       </section>
 
       <section id="js-doc">
-        <h2>Typing via JSDoc Comments</h2>
+        <h2>Types in JavaScript with JSDoc Comments</h2>
 
         <pre><code class="language-javascript" data-trim data-line-numbers="1-8">
           /** @type string */
@@ -204,7 +204,34 @@
           {
             return `
               Hello, ${name}. 
-              How are you on ${(date || new Date()).toDateString()}?
+              How are you on ${date.toDateString()}?
+            `;
+          }
+        </code></pre>
+      </section>
+      <section id="typescript-syntax-functions" data-auto-animate>
+        <h2>TypeScript Syntax</h2>
+        <h3 data-id="typescript-syntax-title">Functions</h3>
+        <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="5">
+          function greet(name: string, date?: Date): string | undefined 
+          {
+            return `
+              Hello, ${name}. 
+              How are you on ${date.toDateString()}?
+            `;
+          }
+        </code></pre>
+        <img src="images/optional-parameter-error.png" />
+      </section>
+      <section id="typescript-syntax-functions" data-auto-animate>
+        <h2>TypeScript Syntax</h2>
+        <h3 data-id="typescript-syntax-title">Functions</h3>
+        <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers>
+          function greet(name: string, date?: Date): string | undefined 
+          {
+            return `
+              Hello, ${name}. 
+              How are you on ${(date || new Date()).toDateString()}? ✅
             `;
           }
         </code></pre>
@@ -252,6 +279,22 @@
             age: 30
           }; ✅
         </code></pre>
+        </section>
+        <section data-auto-animate>
+          <h2>TypeScript Syntax</h2>
+          <h3 data-id="typescript-syntax-title">Custom Types: Interfaces</h3>
+          <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers>
+          interface Person {
+            name: string;
+            age: number;
+          }
+
+          let person: Person = {
+            name: "Alice",
+            age: "30"
+          }; ❌
+        </code></pre>
+          <img src="images/interface-property-mismatch-error.png" />
         </section>
 
         <section data-auto-animate>
@@ -309,12 +352,12 @@
         <section data-auto-animate>
           <h2>TypeScript Syntax</h2>
           <h3 data-id="typescript-syntax-title">Union Types</h3>
-            <img class="r-stretch" src="images/union-type-intellisense.png" />
+          <img class="r-stretch" src="images/union-type-intellisense.png" />
         </section>
         <section data-auto-animate>
           <h2>TypeScript Syntax</h2>
           <h3 data-id="typescript-syntax-title">Union Types</h3>
-            <img class="r-stretch" src="images/union-type-intellisense-2.png" />
+          <img class="r-stretch" src="images/union-type-intellisense-2.png" />
         </section>
       </section>
 
@@ -370,11 +413,10 @@
           }
         </code></pre>
         </section>
-
         <section data-auto-animate>
           <h2>TypeScript Syntax</h2>
           <h3 data-id="typescript-syntax-title">Generics</h3>
-          <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="7-8|10|11" data-no-escape>
+          <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers data-no-escape>
           function printArray&lt;T>(arr: T[]): void {
             for (let item of arr) {
               console.log(item);
@@ -383,10 +425,21 @@
 
           printArray([1, 2, 3, 4, 5]); ✅
           printArray(["apple", "banana", "cherry"]); ✅
+        </code></pre>
+        </section>
+        <section data-auto-animate>
+          <h2>TypeScript Syntax</h2>
+          <h3 data-id="typescript-syntax-title">Generics</h3>
+          <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers data-no-escape>
+          function printArray&lt;T>(arr: T[]): void {
+            for (let item of arr) {
+              console.log(item);
+            }
+          }
 
-          printArray([1, 2, "apple", "banana"]); ❌
           printArray&lt;string>([1, 2, 3, 4]); ❌
         </code></pre>
+          <img src="images/generics-error.png" />
         </section>
 
         <section data-auto-animate>
@@ -478,7 +531,6 @@
             }
           </code></pre>
           <img src="images/generics-keyof-autocomplete.png" />
-          <img src="images/generics-keyof-error.png" />
         </section>
       </section>
 
@@ -535,7 +587,8 @@
                 <code>T</code>.
               </li>
               <li>
-                <code class="bold">Record&lt;T, U, U></code> Defines an object with field names of type <code>T</code> and
+                <code class="bold">Record&lt;T, U, U></code> Defines an object with field names of type <code>T</code>
+                and
                 properties of type <code>U</code>.
               </li>
             </ul>
@@ -592,29 +645,6 @@
 
         <section data-auto-animate>
           <h2>TypeScript Syntax</h2>
-          <h3 data-id="typescript-syntax-title">Generics & Aliases</h3>
-          <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers="13-16">
-            interface Person {
-              name: string;
-              createDate: Date;
-              age?: number;
-            }
-            
-            interface Employee {
-              name: string;
-              createDate: Date;
-              title: string;
-            }
-            
-            type NewUserRecord = Partial&lt; 
-              Omit&lt;Person, "createDate"> &
-              Omit&lt;Employee, "createDate"> 
-            >;
-          </code></pre>
-        </section>
-
-        <section data-auto-animate>
-          <h2>TypeScript Syntax</h2>
           <h3 data-id="typescript-syntax-title"><code>Record&lt;T, U></code></h3>
 
           <pre data-id="typescript-syntax-example"><code class="language-typescript font-md" data-trim data-line-numbers data-no-escape>
@@ -665,6 +695,9 @@
               <strong>Jess Chadwick</strong>
               <a href="https://github.com/jchadwick">
                 github.com/jchadwick
+              </a>
+              <a href="mailto:jesschadwick@gmail.com"></a>
+              jesschadwick@gmail.com
               </a>
             </div>
             <img class="r-frame avatar" src="images/headshot.jpg" />

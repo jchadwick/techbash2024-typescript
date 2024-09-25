@@ -1,19 +1,9 @@
 interface Person {
   name: string;
-  createDate: Date;
-  age?: number;
+  age: number;
 }
 
-interface Employee {
-  name: string;
-  createDate: Date;
-  title: string;
-}
-
-let user: Person | Employee = { /* ... */ } as any;
-
-if("title" in user) {
-  // ...
-} else {
-  user.
-}
+let person: Person = {
+  name: "Alice",
+  age: "30"
+};
