@@ -15,5 +15,10 @@
 - [ ] install express & cors types
 - [ ] rename to .ts
 - [ ] create model.ts
-- [ ] apply User[] to users array
-- [ ] apply type User to post.body
+- [ ] apply `User[]` to users array
+  - [ ] Fix issues
+- [ ] apply type `User` to `post.body`
+- [ ] `const newUser: Partial<User>`
+- [ ] `const validFields: NewUserValidation`
+- [ ] Fix issues
+- [ ] `users.push(newUser as User)`
