@@ -142,6 +142,7 @@
         <ul>
           <li>Catch more errors earlier</li>
           <li>Better tooling (intellisense, refactoring)</li>
+          <li><strong>Documentation</strong></li>
         </ul>
       </section>
 
@@ -412,6 +413,54 @@
             createDate = "2021-01-01"; ✅
             createDate = 1612137600000; ✅
             createDate = new Date(); ✅
+          </code></pre>
+        </section>
+      </section>
+
+      <section id="interface-vs-alias" data-auto-animate>
+        <section class="section-header">
+          <h2>Interfaces vs. Aliases</h2>
+        </section>
+        <section data-auto-animate>
+          <h2 data-id="typescript-syntax-title">
+            Interfaces vs. Aliases
+          </h2>
+          <div class="font-sm">You <em>can</em> use aliases to define data structures...</div>
+          <pre><code class="language-typescript" data-trim data-line-numbers>
+            type Person = {
+              id: number;
+              createDate: Date;
+              name: string;
+              age: number;
+            }
+          </code></pre>
+          <div class="font-sm">but should you???</div>
+        </section>
+        <section data-auto-animate>
+          <h2 data-id="typescript-syntax-title">
+            Interfaces vs. Aliases
+            <div class="text-center italic" style="font-size: 20px;">
+              (Jess's opinion)
+            </div>
+          </h2>
+          <div class="font-sm">Use <strong>interfaces</strong> to define data structures</div>
+          <pre><code class="language-typescript" data-trim data-line-numbers>
+            interface Person {
+              id: number;
+              createDate: Date;
+              name: string;
+              age: number;
+            }
+          </code></pre>
+          <div class="font-sm text-center" style="width: 20em; margin: auto">
+            Use <strong>aliases</strong> to define complex types
+            <sub class="italic">Especially derived types (more on this later)</sub>
+          </div>
+          <pre><code class="language-typescript" data-trim data-line-numbers>
+            type NewPersonPostRequest = 
+              Partial&lt;
+                Omit&lt;Person, "id" | "createDate">
+              >;
           </code></pre>
         </section>
       </section>
