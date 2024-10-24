@@ -22,3 +22,6 @@
 - [ ] `const validFields: NewUserValidation`
 - [ ] Fix issues
 - [ ] `users.push(newUser as User)`
+
+const columns = ["name", "createDate"] as const;
+type ColumnName = typeof columns[number]
