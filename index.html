@@ -16,44 +16,14 @@
   <div class="reveal">
     <div class="slides">
       <section id="title">
-        <!-- <h2>
-          TypeScript for JavaScript Developers
-        </h2>
-
-        <div class="r-stretch">
-          <p class="mt-3 italic font-sm">
-            How to get started with React
-            framework without a computer science
-            degree
-          </p>
-        </div>
-         -->
-
         <h2>
-          Transitioning from JavaScript to TypeScript
+          Transitioning from <br>JavaScript to TypeScript
         </h2>
 
-        <div class="r-stretch">
-          <p class="mt-3 italic font-sm">
-            Don't worry - static typing isn't that bad.
-          </p>
-          <p style="margin: 2em 0">
-            See the code and slides:
-            <a href="https://github.com/jchadwick/techbash2024-typescript" target="_blank">
-              github.com/jchadwick/techbash2024-typescript
-            </a>
-          </p>
-        </div>
+        <img class="r-stretch" src="images/ts-logo.png" style="max-width: 350px; max-height: 350px;" />
 
-        <div class="flex-row font-sm">
-          <img class="r-frame avatar" src="images/headshot.jpg" />
-          <div class="flex-column grow p-1 align-start justify-between">
-            <strong>Jess Chadwick</strong>
-            <a href="https://github.com/jchadwick">
-              github.com/jchadwick
-            </a>
-          </div>
-          <img src="images/ts-logo.png" style="width: 200px" />
+        <div class=" italic font-sm">
+          Don't worry - static typing isn't that bad.
         </div>
       </section>
 
@@ -297,22 +267,7 @@
           }; ✅
         </code></pre>
         </section>
-        <section data-auto-animate>
 
-          <h2 data-id="typescript-syntax-title">Interfaces</h2>
-          <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers>
-          interface Person {
-            name: string;
-            age: number;
-          }
-
-          let person: Person = {
-            name: "Alice",
-            age: "30"
-          }; ❌
-        </code></pre>
-          <img src="images/interface-property-mismatch-error.png" />
-        </section>
         <section data-auto-animate>
 
           <h2 data-id="typescript-syntax-title">Interfaces</h2>
@@ -327,6 +282,23 @@
           }; ✅
         </code></pre>
         </section>
+        <section data-auto-animate>
+
+          <h2 data-id="typescript-syntax-title">Interfaces</h2>
+          <pre data-id="typescript-syntax-example"><code class="language-typescript" data-trim data-line-numbers>
+          interface Person {
+            name: string;
+            age?: number;
+          }
+
+          let person: Person = {
+            name: "Alice",
+            age: "30"
+          }; ❌
+        </code></pre>
+          <img src="images/interface-property-mismatch-error.png" />
+        </section>
+
 
         <section data-auto-animate>
 
